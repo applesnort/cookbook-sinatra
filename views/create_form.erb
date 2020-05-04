@@ -1,0 +1,23 @@
+<h1>Joel's Cookbook</h1>
+<h3>Add Recipe</h3>
+<form method="post" action="/recipes">
+  <div class="form-group">
+    <label for="exampleInputTitle1">Title</label>
+    <input class="form-control" id="exampleInputTitle1" name="name" aria-describedby="TitleHelp" placeholder="Give your recipe a name">
+    <small id="TitleHelp" class="form-text text-muted">We'll never share your Title with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDescription">Description</label>
+    <input class="form-control" id="exampleInputDescription" name="description" placeholder="Describe your recipe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDescription">Preparation Time</label>
+    <input class="form-control" id="exampleInputDescription" name="prep_time" placeholder="How long does it take to make?">
+  </div>
+  <select class="form-control form-control-lg" name="difficulty">
+  <option>Easy</option>
+  <option>Medium</option>
+  <option>Hard</option>
+  </select>
+  <button type="submit" class="btn btn-primary">Submit Recipe</button>
+</form>
