@@ -35,6 +35,14 @@ post '/recipes' do
   redirect to('/')
 end
 
+post '/destroy' do
+  @cookbook = Cookbook.new(csv_file_path)
+  @recipes = @cookbook.all
+  # select recipe.id?
+  # send recipe.id to @cookbook.remove_recipe(recipe)
+  redirect to('/')
+end
+
 get '/about' do
   erb :about
 end

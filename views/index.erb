@@ -1,12 +1,21 @@
 <h1>Joel's Cookbook</h1>
 
-<% @recipes.each do |recipe| %>
-  <div class="card" style="width: 30rem;">
-    <img class="card-img-top" src="<% recipe.img %>" alt="Card image cap">
-    <div class="card-body">
-      <h4 class="card-title"><%= recipe.name %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= recipe.prep_time %></h6>
-      <p class="card-text"><%= recipe.description %></p>
+  <div>
+    <a href="/new" class="btn btn-primary btn-lg">New Recipe</a>
   </div>
-<% end %>
-<a href="/new" class="btn btn-primary">New Recipe</a>
+<h3>List of recipes</h3>
+  <% @recipes.each do |recipe| %>
+  <% p recipe %>
+    <div class="card" style="width: 30rem;">
+      <img class="card-img-top" src="<% recipe.img %>" alt="Card image cap">
+      <div class="card-body">
+        <h4 class="card-title"><%= recipe.name %></h4>
+        <h6 class="card-subtitle mb-2 text-muted"><%= recipe.prep_time %></h6>
+        <p class="card-text"><%= recipe.description %></p>
+    </div>
+    <form action="/destroy" method="post">
+      <div>
+        <a href="/destroy" button type="submit" class="btn btn-danger btn-sm">Delete Recipe</a>
+      </div>
+    </form>
+  <% end %>
