@@ -5,6 +5,9 @@ require "better_errors"
 
 require_relative 'cookbook'
 require_relative 'recipe'
+require_relative 'services/import/recipes_from_url'
+
+use Rack::MethodOverride
 
 set :bind, '0.0.0.0'
 configure :development do
@@ -25,21 +28,24 @@ get '/new' do
   erb :create_form
 end
 
+get '/search' do
+  @query = params[:query]
+  @web_results = RecipesFromUrl.call(@query)
+  erb :"search/results"
+end
+
 post '/recipes' do
   @cookbook = Cookbook.new(csv_file_path)
   @recipes = @cookbook.all
-  p params
   recipe = Recipe.new(params)
-  p recipe
   @cookbook.add_recipe(recipe)
   redirect to('/')
 end
 
-post '/destroy' do
+delete '/delete/:id' do
   @cookbook = Cookbook.new(csv_file_path)
-  @recipes = @cookbook.all
-  # select recipe.id?
-  # send recipe.id to @cookbook.remove_recipe(recipe)
+  p params
+  @cookbook.destroy(params[:id])
   redirect to('/')
 end
 

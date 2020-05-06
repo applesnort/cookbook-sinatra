@@ -1,4 +1,3 @@
-<h1>Joel's Cookbook</h1>
 <h3>Add Recipe</h3>
 <form method="post" action="/recipes">
   <div class="form-group">
@@ -14,7 +13,11 @@
     <label for="exampleInputDescription">Preparation Time</label>
     <input class="form-control" id="exampleInputDescription" name="prep_time" placeholder="How long does it take to make?">
   </div>
-  <select class="form-control form-control-lg" name="difficulty">
+  <div class="form-group">
+    <label for="exampleInputDescription">Image url</label>
+    <input class="form-control" id="exampleInputDescription" name="prep_time" placeholder="Paste a url here">
+  </div>
+  <select class="form-control form-control-lg" name="img">
   <option>Easy</option>
   <option>Medium</option>
   <option>Hard</option>

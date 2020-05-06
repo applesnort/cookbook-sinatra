@@ -1,7 +1,8 @@
 class Recipe
-  attr_reader :name, :description, :created_at, :prep_time, :difficulty, :archived, :img
+  attr_accessor :id, :name, :description, :created_at, :prep_time, :difficulty, :archived, :img
 
   def initialize(attributes = {})
+    @id = attributes[:id]
     @name = attributes[:name]
     @description = attributes[:description]
     @prep_time = attributes[:prep_time]

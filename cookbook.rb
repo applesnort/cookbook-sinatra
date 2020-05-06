@@ -30,8 +30,8 @@ class Cookbook
     return recipe
   end
 
-  def remove_recipe(recipe_index)
-    @recipes.delete_at(recipe_index)
+  def destroy(recipe)
+    @recipes = @recipes.each.reject { |r| r.id == recipe }
     store_in_csv
   end
 
@@ -44,13 +44,14 @@ class Cookbook
   end
 
   def store_in_csv
-    column_header = ["name", "description", "prep time", "difficulty", "done", "image"]
+    column_header = ["id", "name", "description", "prep time", "difficulty", "done", "image"]
     csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
     CSV.open(@csv_file_path, 'wb', csv_options) do |csv|
       csv << column_header
       @recipes.each do |recipe|
         # write one row contianing a recipe object
-        csv << [recipe.name, 
+        csv << [recipe.id,
+        recipe.name, 
         recipe.description, 
         recipe.prep_time, 
         recipe.difficulty, 
