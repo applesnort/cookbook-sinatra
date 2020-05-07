@@ -1,0 +1,39 @@
+#delete_link {
+  color: rgba(204, 39, 53, 1);
+}
+
+#resultsDisplayCard {
+  padding: 1.5rem !important;
+  border-style: inset;
+  border-width: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+#resultsDisplayCardTitle {
+  position: relative;
+  left: 12rem;
+  top: -10.3rem;
+}
+
+#resultsDisplayCardSubtitle {
+  position: relative;
+  left: 12rem;
+  top: -10.3rem;
+}
+
+#resultsDisplayCardDescription {
+  position: relative;
+  left: 11rem;
+  top: -10.3rem;
+}
+
+
+#cardIndexDisplayList {
+
+}
+
+#resultsAddButton {
+  position: relative;
+  top: -19.5rem;
+  left: 40rem;
+}
