@@ -1,23 +1,22 @@
-<h3>Search Results for: `<%= @query %>`</h3>
-<form method="post" action="/recipes">
-  <div class="container">
-    <div class="row">
-      <% @web_results.each do |recipe| %>
-      <div class="card" style="width: 30rem;">
-        <img class="card-img-top" name="img" src="<%= recipe.img[:img] %>" alt="Card image cap">
-        <div class="card-body">
-        <div class="row">
-          <div class="col-lg-8">
-            <h3 class="card-title" name="name"><%= recipe.name[:name] %></h3>
-            <h6 class="card-subtitle mb-2 text-muted" name="prep_time">Prep time : <%= recipe.prep_time[:prep_time] %></h6>
-          </div>
-          <div class="col-md-4">
-            <button type="submit" class="btn btn-info btn-sm">+ Add to Cookbook</button>
-          </div>
-        </div>
-        </div>
-          <p class="card-text" name="description"><%= recipe.description[:description] %></p>
-      </div>
+<div>
+  <h3>Search Results for: `<%= @query %>`</h3>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card" id="resultsDisplayCard">
+    <% @web_results.each do |result| %>
+      <img class="card-img-top" style="width: 10rem;" name="img" src="<%= result.img %>" alt="oof where dat image at">
+      <h3 class="card-title" id="resultsDisplayCardTitle" name="name"><%= result.name %></h3>
+      <h6 class="card-subtitle mb-2 text-muted" id="resultsDisplayCardSubtitle" name="prep_time">Prep time : <%= result.prep_time %></h6>
+      <p class="card-body" name="description" id="resultsDisplayCardDescription"><%= result.description %></p>
+      <form method="post" action="/recipes">
+        <input type="hidden" name="name" value="<%= result.name %>">
+        <input type="hidden" name="description" value="<%= result.description %>">
+        <input type="hidden" name="prep_time" value="<%= result.prep_time %>">
+        <input type="hidden" name="img" value="<%= result.img %>">
+        <button type="submit" class="btn btn-success btn-lg" id="resultsAddButton">+ Add</button>
+      </form>
     <% end %>
     </div>
   </div>
+</div>
