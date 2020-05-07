@@ -15,7 +15,7 @@ configure :development do
   BetterErrors.application_root = File.expand_path('..', __FILE__)
 end
 
-csv_file_path = 'recipes.csv'
+csv_file_path = File.join(__dir__,'recipes.csv')
 
 
 get '/' do
@@ -35,6 +35,7 @@ get '/search' do
 end
 
 post '/recipes' do
+  p params
   @cookbook = Cookbook.new(csv_file_path)
   @recipes = @cookbook.all
   recipe = Recipe.new(params)
@@ -43,17 +44,14 @@ post '/recipes' do
 end
 
 delete '/delete/:id' do
-  @cookbook = Cookbook.new(csv_file_path)
   p params
+  @cookbook = Cookbook.new(csv_file_path)
+  p @cookbook.all
   @cookbook.destroy(params[:id])
+  p @cookbook.all
   redirect to('/')
 end
 
 get '/about' do
   erb :about
-end
-
-get '/team/:username' do
-  puts params[:username]
-  "The username is #{params[:username]}"
 end
